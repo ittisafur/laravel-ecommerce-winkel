@@ -22,7 +22,6 @@ Route::get('/shop', 'HomeController@shop')->name('shop');
 
 Route::get('/about', 'HomeController@about')->name('about');
 
-Route::get('/blog', 'HomeController@blog')->name('blog');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
@@ -33,6 +32,11 @@ Route::get('/cart', 'HomeController@cart')->name('cart');
 Route::get('/checkout', 'HomeController@checkout')->name('checkout');
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => '/blog'], function(){
+    Route::get('/', 'BlogController@index')->name('blog');
+    Route::get('/{slug}', 'BlogController@show')->name('blog.show');
+});
+
+Route::group(['prefix' => 'winkel/dashboard'], function () {
     Voyager::routes();
 });
