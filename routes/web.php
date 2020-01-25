@@ -31,6 +31,7 @@ Route::get('/cart', 'HomeController@cart')->name('cart');
 
 Route::get('/checkout', 'HomeController@checkout')->name('checkout');
 
+Route::post('/store-newsletter','NewsLetterController@store');
 
 Route::group(['prefix' => '/blog'], function(){
     Route::get('/', 'BlogController@index')->name('blog');
