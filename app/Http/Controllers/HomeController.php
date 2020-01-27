@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function home()
+    {
+        $products = Product::paginate(6);
+        return view('welcome', compact('products'));
+    }
+    
     public function shop()
     {
-        return view('shop');
+        $products = Product::all();
+        return view('Shop.index', compact('products'));
+    }
+
+    public function shopShow($slug)
+    {
+        $product = Product::where('slug', '=', $slug)->firstOrFail();
+        return view('Shop.show', compact('product'));
     }
 
     public function about()
@@ -28,10 +37,7 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    public function single()
-    {
-        return view('single-product');
-    }
+    
 
     public function cart()
     {

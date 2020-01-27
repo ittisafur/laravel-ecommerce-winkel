@@ -11,27 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
+Route::get('/', 'HomeController@home')->name('home');
 
 // Basic Routes
 
-Route::get('/shop', 'HomeController@shop')->name('shop');
+
 
 Route::get('/about', 'HomeController@about')->name('about');
 
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
-Route::get('/single', 'HomeController@single')->name('single');
+
 
 Route::get('/cart', 'HomeController@cart')->name('cart');
 
 Route::get('/checkout', 'HomeController@checkout')->name('checkout');
 
 Route::post('/store-newsletter','NewsLetterController@store');
+
+Route::group(['prefix' => '/products'], function(){
+    Route::get('/', 'HomeController@shop')->name('shop');
+    Route::get('/{slug}', 'HomeController@shopShow')->name('shop.single');
+});
 
 Route::group(['prefix' => '/blog'], function(){
     Route::get('/', 'BlogController@index')->name('blog');
