@@ -8,11 +8,7 @@
 
 ## About The Project
 
-This is a basic E-commerce application with a backend with 
-
-[Voyager]: https://voyager.devdojo.com/
-
-
+This is a basic E-commerce application with a backend with https://voyager.devdojo.com/
 
 ```shell
 git clone https://github.com/ittisafur/laravel-ecommerce-winkel.git
@@ -37,8 +33,6 @@ php artisan migrate
 ```shell
 php artisan serve
 ```
-
-
 
 ## License
 
