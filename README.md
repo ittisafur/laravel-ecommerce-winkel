@@ -34,6 +34,7 @@ php artisan migrate
 php artisan serve
 ```
 
+<a href="https://laravel-winkel.herokuapp.com/">Visit the site</a>
 ## License
 
 The E-commerce project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
