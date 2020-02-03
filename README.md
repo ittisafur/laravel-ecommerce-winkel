@@ -31,6 +31,14 @@ php artisan migrate
 ```
 
 ```shell
+php artisan voyager:admin youremail@example.com --create
+```
+
+```shell
+php artisan voyager:install
+```
+
+```shell
 php artisan serve
 ```
 

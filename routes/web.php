@@ -14,14 +14,7 @@
 Route::get('/', 'HomeController@home')->name('home');
 
 // Basic Routes
-
-
-
 Route::get('/about', 'HomeController@about')->name('about');
-
-
-Route::get('/contact', 'HomeController@contact')->name('contact');
-
 
 
 Route::get('/cart', 'HomeController@cart')->name('cart');
@@ -39,6 +32,10 @@ Route::group(['prefix' => '/blog'], function(){
     Route::get('/', 'BlogController@index')->name('blog');
     Route::get('/{slug}', 'BlogController@show')->name('blog.show');
 });
+
+Route::get('/contact', 'ContactController@contact')->name('contact');
+
+Route::post('/contact', 'ContactController@contactPost')->name('contact.store');
 
 Route::group(['prefix' => 'winkel/dashboard'], function () {
     Voyager::routes();
