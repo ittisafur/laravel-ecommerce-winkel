@@ -76,7 +76,15 @@
 	          		<p style="color: #000;">80 piece available</p>
 	          	</div>
           	</div>
-          	<p><a href="cart.html" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+          	<p>
+				<form action="{{route('cart.store')}}" method="POST">
+					@csrf
+					<input type="hidden" name="id" value="{{$product->id}}">
+					<input type="hidden" name="name" value="{{$product->name}}">
+					<input type="hidden" name="price" value="{{$product->price}}">
+					<button class="btn btn-black py-3 px-5">Add to Cart</button>
+				</form>
+			</p>
     			</div>
     		</div>
     	</div>

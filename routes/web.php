@@ -17,11 +17,16 @@ Route::get('/', 'HomeController@home')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
 
 
-Route::get('/cart', 'HomeController@cart')->name('cart');
+
 
 Route::get('/checkout', 'HomeController@checkout')->name('checkout');
 
 Route::post('/store-newsletter','NewsLetterController@store');
+
+Route::group(['prefix'=> '/cart'], function(){
+    Route::get('/', 'CartController@index')->name('cart');
+    Route::post('/', 'CartController@store')->name('cart.store');
+});
 
 Route::group(['prefix' => '/products'], function(){
     Route::get('/', 'HomeController@shop')->name('shop');

@@ -2,37 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
-class HomeController extends Controller
+class CartController extends Controller
 {
-    public function home()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $products = Product::paginate(6);
-        return view('welcome', compact('products'));
-    }
-    
-    public function shop()
-    {
-        $products = Product::all();
-        return view('Shop.index', compact('products'));
-    }
-
-    public function shopShow($slug)
-    {
-        $product = Product::where('slug', '=', $slug)->firstOrFail();
-        return view('Shop.show', compact('product'));
-    }
-
-    public function about()
-    {
-        return view('about');
-    }
-
-    public function checkout()
-    {
-        return view('checkout');
+        return view('cart');
     }
 
     /**
@@ -53,7 +35,9 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
+
+        return redirect()->route('cart')->with('success_message', 'Item was added to the Cart');
     }
 
     /**

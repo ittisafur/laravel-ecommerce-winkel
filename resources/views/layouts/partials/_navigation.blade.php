@@ -19,7 +19,7 @@
 	          <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="{{route('blog')}}" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[{{Cart::instance('default')->count()}}]</a></li>
 
 	        </ul>
 	      </div>
